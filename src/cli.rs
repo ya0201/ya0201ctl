@@ -14,6 +14,12 @@ pub enum TopLevelCommand {
 
     #[command(subcommand)]
     Issue(IssueCommand),
+
+    #[command(name = "json2yaml")]
+    Json2Yaml {
+        #[arg(help = "Input JSON content")]
+        input: String,
+    },
 }
 
 #[derive(Subcommand, Debug)]
