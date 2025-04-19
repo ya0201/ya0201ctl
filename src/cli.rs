@@ -9,7 +9,10 @@ pub struct Cli {
 
 #[derive(Subcommand, Debug)]
 pub enum TopLevelCommand {
+    #[command(subcommand)]
     Repo(RepoCommand),
+
+    #[command(subcommand)]
     Issue(IssueCommand),
 }
 
