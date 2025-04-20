@@ -1,7 +1,8 @@
-pub mod repo;
 pub mod issue;
+pub mod json2yaml;
+pub mod repo;
 
-use crate::cli::{RepoCommand, IssueCommand};
+use crate::cli::{IssueCommand, RepoCommand};
 
 pub fn handle_repo_command(cmd: RepoCommand) {
     match cmd {
@@ -15,4 +16,8 @@ pub fn handle_issue_command(cmd: IssueCommand) {
         IssueCommand::Create { title } => issue::create::run(title),
         IssueCommand::List => issue::list::run(),
     }
+}
+
+pub fn handle_json2yaml_command(file: Option<String>) {
+    json2yaml::run(file);
 }
