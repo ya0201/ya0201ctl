@@ -1,4 +1,5 @@
 pub mod issue;
+pub mod json2yaml;
 pub mod repo;
 
 use crate::cli::{IssueCommand, RepoCommand};
@@ -17,7 +18,6 @@ pub fn handle_issue_command(cmd: IssueCommand) {
     }
 }
 
-pub fn json2yaml_command(input: String) {
-    // Placeholder for JSON to YAML conversion logic
-    println!("Converting JSON to YAML: {}", input);
+pub fn handle_json2yaml_command(file: Option<String>) {
+    json2yaml::run(file);
 }

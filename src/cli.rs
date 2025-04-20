@@ -17,8 +17,13 @@ pub enum TopLevelCommand {
 
     #[command(name = "json2yaml")]
     Json2Yaml {
-        #[arg(help = "Input JSON content")]
-        input: String,
+        #[arg(
+            short,
+            long,
+            help = "the JSON file to convert to YAML.
+            If not provided, reads from stdin"
+        )]
+        file: Option<String>,
     },
 }
 
