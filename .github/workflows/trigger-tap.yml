@@ -2,7 +2,7 @@ name: Trigger Homebrew Tap Update
 
 on:
   release:
-    types: [published]
+    types: [created, published]
 
 jobs:
   notify:
