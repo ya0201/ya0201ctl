@@ -45,9 +45,12 @@ jobs:
           cd dist
           tar -czf ${BINARY_NAME}-${{ matrix.ext }}.tar.gz $BINARY_NAME
 
+      - name: Set up GitHub CLI
+        uses: cli/cli-action@v2
+
       - name: Create GitHub Release and upload asset
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           BINARY_NAME=$(basename $(cargo metadata --no-deps --format-version=1 | jq -r '.packages[0].targets[] | select(.kind[]=="bin") | .name'))
           TAG_NAME=${GITHUB_REF#refs/tags/}
