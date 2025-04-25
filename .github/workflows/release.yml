@@ -61,7 +61,7 @@ jobs:
           curl -X POST \
             -H "Accept: application/vnd.github+json" \
             -H "Authorization: Bearer ${{ secrets.TAP_PAT }}" \
-            https://api.github.com/repos/ya0201/homebrew-ya0201ctl/actions/workflows/update-formula.yml/dispatches \
+            https://api.github.com/repos/ya0201/homebrew-tap/actions/workflows/update-ya0201ctl-formula.yml/dispatches \
             -d @- <<EOF
           {
             "ref": "main",
