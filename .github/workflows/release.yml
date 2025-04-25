@@ -51,3 +51,24 @@ jobs:
           files: dist/*.tar.gz
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  trigger:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Dispatch to tap repo
+        run: |
+          curl -X POST \
+            -H "Accept: application/vnd.github+json" \
+            -H "Authorization: Bearer ${{ secrets.TAP_PAT }}" \
+            https://api.github.com/repos/ya0201/homebrew-ya0201ctl/actions/workflows/update-formula.yml/dispatches \
+            -d @- <<EOF
+          {
+            "ref": "main",
+            "inputs": {
+              "tag": "${{ github.ref_name }}",
+              "macos_url": "https://github.com/ya0201/your-repo/releases/download/${{ github.ref_name }}/ya0201ctl-macos.tar.gz",
+              "linux_url": "https://github.com/ya0201/your-repo/releases/download/${{ github.ref_name }}/ya0201ctl-linux.tar.gz"
+            }
+          }
+          EOF
