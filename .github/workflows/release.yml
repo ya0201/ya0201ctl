@@ -45,9 +45,17 @@ jobs:
           cd dist
           tar -czf ${BINARY_NAME}-${{ matrix.ext }}.tar.gz $BINARY_NAME
 
-      - name: Upload Release Asset
-        uses: softprops/action-gh-release@v1
-        with:
-          files: dist/*.tar.gz
+      - name: Set up GitHub CLI
+        uses: cli/cli-action@v2
+
+      - name: Create GitHub Release and upload asset
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          BINARY_NAME=$(basename $(cargo metadata --no-deps --format-version=1 | jq -r '.packages[0].targets[] | select(.kind[]=="bin") | .name'))
+          TAG_NAME=${GITHUB_REF#refs/tags/}
+          gh release create "$TAG_NAME" \
+            "dist/${BINARY_NAME}-${{ matrix.ext }}.tar.gz" \
+            --title "$TAG_NAME" \
+            --notes "Release for $TAG_NAME" \
+            --target "${{ github.sha }}"
