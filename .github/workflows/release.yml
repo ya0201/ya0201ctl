@@ -67,8 +67,8 @@ jobs:
             "ref": "main",
             "inputs": {
               "tag": "${{ github.ref_name }}",
-              "macos_url": "https://github.com/ya0201/your-repo/releases/download/${{ github.ref_name }}/ya0201ctl-macos.tar.gz",
-              "linux_url": "https://github.com/ya0201/your-repo/releases/download/${{ github.ref_name }}/ya0201ctl-linux.tar.gz"
+              "macos_url": "https://github.com/ya0201/ya0201ctl/releases/download/${{ github.ref_name }}/ya0201ctl-macos.tar.gz",
+              "linux_url": "https://github.com/ya0201/ya0201ctl/releases/download/${{ github.ref_name }}/ya0201ctl-linux.tar.gz"
             }
           }
           EOF
