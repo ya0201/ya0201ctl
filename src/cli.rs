@@ -15,6 +15,9 @@ pub enum TopLevelCommand {
     #[command(subcommand)]
     Issue(IssueCommand),
 
+    #[command(subcommand)]
+    Subnet(SubnetCommand),
+
     #[command(name = "json2yaml")]
     Json2Yaml {
         #[arg(
@@ -54,4 +57,16 @@ pub enum IssueCommand {
         title: String,
     },
     List,
+}
+
+#[derive(Subcommand, Debug)]
+pub enum SubnetCommand {
+    Info {
+        #[arg(short, long, help = "Subnet CIDR to get info about")]
+        cidr: String,
+    },
+    // List {
+    //     #[arg(short, long, help = "Subnet CIDR to list")]
+    //     cidr: String,
+    // },
 }
