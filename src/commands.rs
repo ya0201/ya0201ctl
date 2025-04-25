@@ -1,6 +1,7 @@
 pub mod issue;
 pub mod json2yaml;
 pub mod repo;
+pub mod yaml2json;
 
 use crate::cli::{IssueCommand, RepoCommand};
 
@@ -20,4 +21,8 @@ pub fn handle_issue_command(cmd: IssueCommand) {
 
 pub fn handle_json2yaml_command(file: Option<String>) {
     json2yaml::run(file);
+}
+
+pub fn handle_yaml2json_command(file: Option<String>) {
+    yaml2json::run(file);
 }
