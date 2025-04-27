@@ -68,8 +68,9 @@ pub enum SubnetCommand {
         #[arg(short, long, help = "If specified, output will be JSON format")]
         json: bool,
     },
-    // List {
-    //     #[arg(help = "Subnet CIDR to list")]
-    //     cidr: String,
-    // },
+    #[command(name = "iplist")]
+    IPList {
+        #[arg(help = "Subnet CIDR to list")]
+        cidr: String,
+    },
 }
