@@ -22,7 +22,7 @@ pub fn handle_issue_command(cmd: IssueCommand) {
 
 pub fn handle_subnet_command(cmd: SubnetCommand) {
     match cmd {
-        SubnetCommand::Info { cidr } => subnet::info::run(cidr),
+        SubnetCommand::Info { cidr, json } => subnet::info::run(cidr, json),
     }
 }
 

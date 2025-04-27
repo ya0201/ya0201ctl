@@ -62,11 +62,14 @@ pub enum IssueCommand {
 #[derive(Subcommand, Debug)]
 pub enum SubnetCommand {
     Info {
-        #[arg(short, long, help = "Subnet CIDR to get info about")]
+        #[arg(help = "Subnet CIDR to get info about")]
         cidr: String,
+
+        #[arg(short, long, help = "If specified, output will be JSON format")]
+        json: bool,
     },
     // List {
-    //     #[arg(short, long, help = "Subnet CIDR to list")]
+    //     #[arg(help = "Subnet CIDR to list")]
     //     cidr: String,
     // },
 }
