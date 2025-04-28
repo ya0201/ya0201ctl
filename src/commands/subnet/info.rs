@@ -1,6 +1,7 @@
 extern crate ipnet;
 use ipnet::IpNet;
 use std::str::FromStr;
+
 pub fn run(cidr: String, json: bool) {
     // println!("Subnet info: {}", cidr);
     if json {
