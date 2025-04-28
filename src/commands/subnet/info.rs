@@ -36,7 +36,7 @@ pub fn run(cidr: String, json: bool) {
         builder.push_record(["Network Address", mysubnet.network_address.as_str()]);
         builder.push_record([
             "Hosts",
-            format!("{}-{}", mysubnet.hosts[0], mysubnet.hosts.last().unwrap()).as_str(),
+            format!("{} - {}", mysubnet.hosts[0], mysubnet.hosts.last().unwrap()).as_str(),
         ]);
         builder.push_record(["Broadcast Address", mysubnet.broadcast_address.as_str()]);
         builder.push_record(["CIDR", mysubnet.cidr.as_str()]);
